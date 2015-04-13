@@ -21,8 +21,8 @@ import scala.io.Source
 
 object Word2vecdl4j {
   case class Word2vecdl4jConfig(abstractsFile: String = "",
-                                modelFile: String = "")
-        //                        sparkMaster: String = "local[64]")
+                                modelFile: String = ""),
+                                sparkMaster: String = "local[64]")
 
   case class WVS extends WordVectorSerializer
 
@@ -39,9 +39,9 @@ object Word2vecdl4j {
         (x, c) => c.copy(modelFile = x)
       }
 
-      // arg[String]("sparkMaster") valueName("sparkMaster") action {
-      //   (x, c) => c.copy(sparkMaster = x)
-      // }
+      arg[String]("sparkMaster") valueName("sparkMaster") action {
+        (x, c) => c.copy(sparkMaster = x)
+      }
     }
 
     parser.parse(args, Word2vecdl4jConfig()) match {
@@ -55,7 +55,7 @@ object Word2vecdl4j {
   def run(config: Word2vecdl4jConfig): Unit = {
     val conf = new SparkConf()
       .setAppName("w2vdl4j")
-      // .setMaster(config.sparkMaster)
+      .setMaster(config.sparkMaster)
       .set(SparkDl4jMultiLayer.AVERAGE_EACH_ITERATION, "false")
       .set(Word2VecPerformer.NEGATIVE, "0")
       .set("spark.akka.frameSize", "100")
