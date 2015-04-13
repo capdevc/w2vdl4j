@@ -21,7 +21,7 @@ import scala.io.Source
 
 object Word2vecdl4j {
   case class Word2vecdl4jConfig(abstractsFile: String = "",
-                                modelFile: String = ""),
+                                modelFile: String = "",
                                 sparkMaster: String = "local[64]")
 
   case class WVS extends WordVectorSerializer
