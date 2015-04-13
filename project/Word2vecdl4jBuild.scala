@@ -13,7 +13,7 @@ object Word2vecdl4jBuild extends Build {
       scalaVersion := "2.10.4",
 
       libraryDependencies ++= Seq(
-        "org.apache.spark" %% "spark-core" % "1.3.0" % "provided",
+        "org.apache.spark" %% "spark-core" % "1.2.1" % "provided",
         "org.apache.hadoop" % "hadoop-client" % "2.4.0" % "provided",
         "com.github.scopt" %% "scopt" % "3.2.0",
         // "org.nd4j" % "nd4j-jcublas-6.0" % "0.0.3.5.5.3-SNAPSHOT",
